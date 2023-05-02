@@ -27,12 +27,28 @@ public class Cita implements Serializable {
     //clauSecundariacomostta
     private Especialitats especialitat;
     
+    private boolean esOberta;
+    
     protected Cita(){}
 
-    public Cita(Date dataCita, String infrome) {
+    public Cita(Date dataCita, Persona persona, Metge metge, Especialitats especialitat, boolean esOberta) {
+        this.dataCita = dataCita;
+        this.persona = persona;
+        this.metge = metge;
+        this.especialitat = especialitat;
+        this.esOberta = esOberta;
+    }
+
+    public Cita(Date dataCita, String infrome, Persona persona, Metge metge, Especialitats especialitat, boolean esOberta) {
         this.dataCita = dataCita;
         this.infrome = infrome;
+        this.persona = persona;
+        this.metge = metge;
+        this.especialitat = especialitat;
+        this.esOberta = esOberta;
     }
+
+    
 
     public int getCodiCíta() {
         return codiCíta;
@@ -46,12 +62,50 @@ public class Cita implements Serializable {
         return infrome;
     }
 
+    public Especialitats getEspecialitat() {
+        return especialitat;
+    }
+
+    public boolean isEsOberta() {
+        return esOberta;
+    }
+
+    public void setEspecialitat(Especialitats especialitat) {
+        if(!this.esOberta){
+            throw new CitaException("No es pot modificar l'especialitat"
+                    + "perqeula vita es Tancada");
+        }else{
+            this.especialitat = especialitat;
+         
+        }
+       
+    }
+
+    public void setEsOberta(boolean esOberta) {
+        if(this.esOberta && !esOberta){
+          this.esOberta = esOberta;  
+        }else if(!this.esOberta && esOberta){
+            throw new CitaException("No es pot obrir cita"
+                    + "perqeu ia es Tancada");
+        }
+        
+    }
+    
+    
+
     public void setDataCita(Date dataCita) {
         this.dataCita = dataCita;
     }
 
     public void setInfrome(String infrome) {
-        this.infrome = infrome;
+        if(!this.esOberta){
+            throw new CitaException("No es pot modificar l'infrome"
+                    + "perqeula cita es Tancada");
+        }else{
+            this.infrome = infrome;
+         
+        }
+       
     }
 
     public Persona getPersona() {
@@ -67,7 +121,7 @@ public class Cita implements Serializable {
         if (persona == null) {
             throw new CitaException("En una cita, la persona es obligatoria");
         }
-        persona.addCita(this);
+        persona.addCitaPersona(this);
         this.persona = persona;
     }
 
@@ -76,7 +130,7 @@ public class Cita implements Serializable {
         if (metge == null) {
             throw new CitaException("En una cita, el Metge és obligatòri");
         }
-        metge.addObteCites(this);
+        metge.addCitaMetge(this);
         this.metge = metge;
     }
     

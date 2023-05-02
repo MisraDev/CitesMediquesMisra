@@ -16,19 +16,27 @@ import java.util.Objects;
  */
 public class Metge extends Persona {
     //id clau primaria
-    private int codì;
-    //clau secundaria composta
-    private long codiEmpleat;
+    private int codiMetge;
+    
+    private int codiEmpleat;
     //OneToMany
-    List<Cita>obteCites = new ArrayList();
+    private List<Cita>obteCites = new ArrayList();
     //ManytoMany
-    private List<Especialitats> especialitatsMetge;
+    private List<Especialitats> especialitatsMetge = new ArrayList();;
+    //OneToMany am_me_codi
+    private List<EntradaHorari> agenda = new ArrayList();;
     
     protected Metge(){}
     
-    public Metge(long codiEmpleat){
+    public Metge(int codiEmpleat){
         this.codiEmpleat = codiEmpleat;
     }
+
+    public int getCodiMetge() {
+        return codiMetge;
+    }
+    
+    
 
     public long getCodiEmpleat() {
         return codiEmpleat;
@@ -56,11 +64,35 @@ public class Metge extends Persona {
         }
         return especialitatsMetge.remove(e);
     }
+    
+    public Iterator<EntradaHorari> iteAgenda() {
+        return Collections.unmodifiableCollection(agenda).iterator();
+    }
+
+    public boolean addAgenda(EntradaHorari e) {
+        if (e==null) {
+            throw new RuntimeException("Intent d'afegir agenda null");
+        }
+        if (agenda.contains(e)) {
+            return false;
+        } else {
+            agenda.add(e);
+            return true;
+        }
+    }
+
+    public boolean removeAgenda(EntradaHorari e) {
+        if (e==null) {
+            throw new RuntimeException("Intent d'eliminar agenda null");
+        }
+        return agenda.remove(e);
+    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + (int) (this.codiEmpleat ^ (this.codiEmpleat >>> 32));
+        int hash = 5;
+        hash = 59 * hash + this.codiMetge;
+        hash = 59 * hash + this.codiEmpleat;
         return hash;
     }
 
@@ -76,6 +108,9 @@ public class Metge extends Persona {
             return false;
         }
         final Metge other = (Metge) obj;
+        if (this.codiMetge != other.codiMetge) {
+            return false;
+        }
         return this.codiEmpleat == other.codiEmpleat;
     }
 
@@ -87,9 +122,30 @@ public class Metge extends Persona {
         return "Metge{" + "codiEmpleat=" + codiEmpleat + ", especialitatMetge=" + especialitatsMetge + '}';
     }
     
-    final void addObteCites(Cita cita) {
-        obteCites.add(cita);
+    public Iterator<Cita> iteCitesMetge() {
+        return Collections.unmodifiableCollection(obteCites).iterator();
     }
+
+    public boolean addCitaMetge(Cita e) {
+        if (e==null) {
+            throw new RuntimeException("Intent d'afegir especialitat null");
+        }
+        if (obteCites.contains(e)) {
+            return false;
+        } else {
+            obteCites.add(e);
+            return true;
+        }
+    }
+
+    public boolean removeCitaMetge(Cita e) {
+        if (e==null) {
+            throw new RuntimeException("Intent d'eliminar autor null");
+        }
+        return obteCites.remove(e);
+    }
+    
+    
     
     
     

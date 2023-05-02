@@ -6,7 +6,10 @@ package misra.citesmediques;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -117,8 +120,63 @@ public abstract class Persona implements Serializable {
         this.password = password;
     }
     
-    final void addCita(Cita cita) {
-        cites.add(cita);
+    public Iterator<Cita> iteCitesPersona() {
+        return Collections.unmodifiableCollection(cites).iterator();
+    }
+
+    public boolean addCitaPersona(Cita e) {
+        if (e==null) {
+            throw new RuntimeException("Intent d'afegir cites null");
+        }
+        if (cites.contains(e)) {
+            return false;
+        } else {
+            cites.add(e);
+            return true;
+        }
+    }
+
+    public boolean removeCitaPersona(Cita e) {
+        if (e==null) {
+            throw new RuntimeException("Intent d'eliminar autor null");
+        }
+        return cites.remove(e);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.codì;
+        hash = 89 * hash + Objects.hashCode(this.Nif);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        if (this.codì != other.codì) {
+            return false;
+        }
+        return Objects.equals(this.Nif, other.Nif);
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "cod\u00ec=" + codì + ", Nif=" + Nif + 
+                ", nom=" + nom + ", cognom1=" + cognom1 + 
+                ", cognom2=" + cognom2 + ", adreca=" + adreca + 
+                ", poblacio=" + poblacio + ", sexe=" + sexe + 
+                ", login=" + login + ", password=" + password + 
+                ", cites=" + cites + '}';
     }
     
     
