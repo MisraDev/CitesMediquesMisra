@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginnFragment2">
+
+    <fragment
+        android:id="@+id/loginnFragment2"
+        android:name="misra.citesmediques.fragments.LoginnFragment"
+        android:label="LoginnFragment" >
+        <action
+            android:id="@+id/action_loginnFragment2_to_listaCitesFragment2"
+            app:destination="@id/listaCitesFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaCitesFragment2"
+        android:name="misra.citesmediques.fragments.ListaCitesFragment"
+        android:label="fragment_lista_cites"
+        tools:layout="@layout/fragment_lista_cites" >
+        <action
+            android:id="@+id/action_listaCitesFragment2_to_crearCitaFragment"
+            app:destination="@id/crearCitaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearCitaFragment"
+        android:name="misra.citesmediques.fragments.CrearCitaFragment"
+        android:label="fragment_crear_cita"
+        tools:layout="@layout/fragment_crear_cita" >
+        <action
+            android:id="@+id/action_crearCitaFragment_to_listaCitesFragment2"
+            app:destination="@id/listaCitesFragment2" />
+    </fragment>
+</navigation>

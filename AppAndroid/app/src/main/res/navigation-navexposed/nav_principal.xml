@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_principal"
+    app:startDestination="@id/loginnFragment"
+    >
+
+    <fragment
+        android:id="@+id/loginnFragment"
+        android:name="misra.citesmediques.fragments.LoginnFragment"
+        android:label="LoginnFragment" >
+        <action
+            android:id="@+id/action_loginnFragment_to_listaCitesFragment"
+            app:destination="@id/listaCitesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaCitesFragment"
+        android:name="misra.citesmediques.fragments.ListaCitesFragment"
+        android:label="fragment_lista_cites"
+        tools:layout="@layout/fragment_lista_cites" />
+</navigation>

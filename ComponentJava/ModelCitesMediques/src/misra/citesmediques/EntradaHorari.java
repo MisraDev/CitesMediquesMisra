@@ -4,6 +4,7 @@
  */
 package misra.citesmediques;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -17,10 +18,9 @@ import javax.persistence.EmbeddedId;
  *
  * @author misra
  */
-public class EntradaHorari {
+public class EntradaHorari implements Serializable {
     
-    @EmbeddedId
-    private EntradaHorariId id;
+    
     //id 3 id primarias
     private Time hora;
     //id

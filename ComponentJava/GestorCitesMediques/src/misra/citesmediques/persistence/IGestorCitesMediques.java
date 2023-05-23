@@ -5,9 +5,12 @@
 package misra.citesmediques.persistence;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
 import misra.citesmediques.Cita;
+import misra.citesmediques.CitaFormat;
 import misra.citesmediques.Especialitats;
 import misra.citesmediques.Metge;
 import misra.citesmediques.Persona;
@@ -31,7 +34,10 @@ public interface IGestorCitesMediques {
      * @throws EPSednaException si hi ha algun problema
      */
     void commit();
-
+    
+    //-----------------------------
+    //---------------------JPA-----------------------------
+    //---------------------------------------------------------
     /**
      * Intenta recuperar persona amb codi indicat per paràmetre.
      *
@@ -60,6 +66,18 @@ public interface IGestorCitesMediques {
      * 
      * 
      */
+    
+    List<Especialitats> getEspecialitatsMetge(int codiMetge);
+    
+    List<Metge> getMetges();
+    
+    void addEspecialitatMetge(Especialitats especialitat, int codiMetge);
+    
+    void removeEspecialitatMetge(Especialitats especialitat, int codiMetge);
+    
+    //-------------------------
+    //-----------------------c#
+    //--------------------------------
     Cita getCita(int codi);
     
     /**
@@ -73,13 +91,48 @@ public interface IGestorCitesMediques {
     Especialitats getEspecialitat(int codi);
     
     /**
-     * Mira si una cita esta oberta.
+     * Intenta recuperar cita amb codi indicat per paràmetre.
      *
      * @param codi de l'empleat a recuperar
-     * @return true si la cita es pot modificar
+     * @return L'objecte cita trobat o null si no existeix
      * 
      * 
      */
+    int getCodiEspecialitatPerNom(String nomEsp);
+    
+    /**
+     * Busca totes les especialitats a la bd.
+     *
+     * @return llista especialitats
+     * 
+     * 
+     */
+    
+    List<Especialitats> getEspecialitats();
+    
+    /**
+     * Busca tots els metges per una especialitat.
+     *
+     * @return llista Metges
+     * @param codiEsp de l'especialitat
+     * 
+     */
+    
+    List<Metge> getMetgePerEspecialitats(int codiEsp);
+    
+    /**
+     * Mira quines hores hi han disponibles per un metge y especialitat concreta
+     *
+     * @param codiEsp de l'empleat a recuperar
+     * @param codiMetge de l'empleat a recuperar
+     * @param data String DAteformat new SimpleDateFormat("yyyy-MM-dd")
+     * @return llista de dates disponibles
+     * 
+     * 
+     */
+    
+    List<Time> getForatsDisponibles(int codiEsp, int codiMetge, String data);
+    
     boolean citaOberta(int codi);
     
     /**
@@ -112,6 +165,8 @@ public interface IGestorCitesMediques {
     /**
      * devuelce todas las citas de un metge en concret
      * 
+     * @param codiPersona
+     * 
      * @return llista cites
      * 
      */
@@ -120,10 +175,12 @@ public interface IGestorCitesMediques {
     /**
      * devuelce todas las citas de un metge en concret
      * 
+     * @param codiPersona
+     * 
      * @return llista cites
      * 
      */
-    boolean anularCita(int codiPersona, int codiCita);
+    List<CitaFormat> getCitesPersonaF(int codiPersona);
     
     /**
      * devuelce todas las citas de un metge en concret
@@ -131,7 +188,7 @@ public interface IGestorCitesMediques {
      * @return llista cites
      * 
      */
-    Cita concertarCita(int codiPersona, int codiMetge, int codiEspecialitat, Date data );
+    List<Object> getCitesPersonaAndoid(int codiPersona);
     
     /**
      * devuelce todas las citas de un metge en concret
@@ -139,7 +196,25 @@ public interface IGestorCitesMediques {
      * @return llista cites
      * 
      */
-    boolean loginPersona(int codiPersona);
+    boolean anularCita( int codiCita);
+    
+    /**
+     * devuelce todas las citas de un metge en concret
+     * 
+     * @return llista cites
+     * 
+     */
+    boolean concertarCita(int codiPersona, int codiMetge, int codiEspecialitat, Timestamp data );
+    
+    List<Persona>getMetgesPerEspecialitatJDBC(int codiEsp);
+    
+    /**
+     * fa le login
+     * 
+     * @return codi perosna en cas de que el login sigui correcte o 0 si no es correcte
+     * 
+     */
+    int loginPersona(String loginPersona, String passwPersona);
     
     /**
      * devuelce todas las citas de un metge en concret

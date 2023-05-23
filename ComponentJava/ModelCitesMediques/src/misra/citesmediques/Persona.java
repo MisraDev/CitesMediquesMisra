@@ -5,20 +5,16 @@
 package misra.citesmediques;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 
 /**
  *
  * @author misra
  */
-public abstract class Persona implements Serializable {
-    
-    private int codì;
-    private String Nif;
+public class Persona implements Serializable {
+
+    private int codi;
+    private String nif;
     private String nom;
     private String cognom1;
     private String cognom2;
@@ -27,13 +23,15 @@ public abstract class Persona implements Serializable {
     private int sexe;
     private String login;
     private String password;
+    private boolean esMetge;
     //One to many
-    private List<Cita> cites = new ArrayList();
-    
-    protected Persona(){}
+//    private List<Cita> cites = new ArrayList();
 
-    public Persona(String Nif, String nom, String cognom1, String cognom2, String adreca, String poblacio, int sexe, String login, String password) {
-        this.Nif = Nif;
+    protected Persona() {
+    }
+
+    public Persona(String Nif, String nom, String cognom1, String cognom2, String adreca, String poblacio, int sexe, String login, String password, boolean esMetge) {
+        this.nif = Nif;
         this.nom = nom;
         this.cognom1 = cognom1;
         this.cognom2 = cognom2;
@@ -42,14 +40,15 @@ public abstract class Persona implements Serializable {
         this.sexe = sexe;
         this.login = login;
         this.password = password;
+        this.esMetge = esMetge;
     }
 
-    public int getCodì() {
-        return codì;
+    public int getCodi() {
+        return codi;
     }
 
     public String getNif() {
-        return Nif;
+        return nif;
     }
 
     public String getNom() {
@@ -84,8 +83,22 @@ public abstract class Persona implements Serializable {
         return password;
     }
 
+    public boolean isEsMetge() {
+        return esMetge;
+    }
+
+    private void setEsMetge(boolean esMetge) {
+        this.esMetge = esMetge;
+    }
+
+    public void setCodi(int codi) {
+        this.codi = codi;
+    }
+
+
+
     public void setNif(String Nif) {
-        this.Nif = Nif;
+        this.nif = Nif;
     }
 
     public void setNom(String nom) {
@@ -119,7 +132,8 @@ public abstract class Persona implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    /*   
     public Iterator<Cita> iteCitesPersona() {
         return Collections.unmodifiableCollection(cites).iterator();
     }
@@ -142,12 +156,12 @@ public abstract class Persona implements Serializable {
         }
         return cites.remove(e);
     }
-
+     */
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.codì;
-        hash = 89 * hash + Objects.hashCode(this.Nif);
+        hash = 89 * hash + this.codi;
+        hash = 89 * hash + Objects.hashCode(this.nif);
         return hash;
     }
 
@@ -163,25 +177,20 @@ public abstract class Persona implements Serializable {
             return false;
         }
         final Persona other = (Persona) obj;
-        if (this.codì != other.codì) {
+        if (this.codi != other.codi) {
             return false;
         }
-        return Objects.equals(this.Nif, other.Nif);
+        return Objects.equals(this.nif, other.nif);
     }
 
     @Override
     public String toString() {
-        return "Persona{" + "cod\u00ec=" + codì + ", Nif=" + Nif + 
-                ", nom=" + nom + ", cognom1=" + cognom1 + 
-                ", cognom2=" + cognom2 + ", adreca=" + adreca + 
-                ", poblacio=" + poblacio + ", sexe=" + sexe + 
-                ", login=" + login + ", password=" + password + 
-                ", cites=" + cites + '}';
+        return "Persona{" + "cod\u00ec=" + codi + ", Nif=" + nif
+                + ", nom=" + nom + ", cognom1=" + cognom1
+                + ", cognom2=" + cognom2 + ", adreca=" + adreca
+                + ", poblacio=" + poblacio + ", sexe=" + sexe
+                + ", login=" + login + ", password=" + password
+                + '}';
     }
-    
-    
-    
-    
-    
-    
+
 }

@@ -6,6 +6,7 @@ package misra.citesmediques;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
@@ -15,15 +16,15 @@ import java.util.Objects;
 public class Cita implements Serializable {
     
     //id
-    private int codiCíta;
+    private int codiCita;
     //clau secunadaria composta
-    private Date dataCita;
+    private Timestamp dataCita;
     private String infrome;
     //ManyToONe
     private Persona persona;
     //manyToOne
     //Clau secundaria composta
-    private Metge metge;
+    private Persona metge;
     //clauSecundariacomostta
     private Especialitats especialitat;
     
@@ -31,7 +32,7 @@ public class Cita implements Serializable {
     
     protected Cita(){}
 
-    public Cita(Date dataCita, Persona persona, Metge metge, Especialitats especialitat, boolean esOberta) {
+    public Cita(Timestamp dataCita, Persona persona, Persona metge, Especialitats especialitat, boolean esOberta) {
         this.dataCita = dataCita;
         this.persona = persona;
         this.metge = metge;
@@ -39,22 +40,26 @@ public class Cita implements Serializable {
         this.esOberta = esOberta;
     }
 
-    public Cita(Date dataCita, String infrome, Persona persona, Metge metge, Especialitats especialitat, boolean esOberta) {
+    public Cita(Timestamp dataCita, Persona persona, Persona metge, Especialitats especialitat, String informe, boolean esOberta) {
         this.dataCita = dataCita;
-        this.infrome = infrome;
+        this.infrome = informe;
         this.persona = persona;
         this.metge = metge;
         this.especialitat = especialitat;
         this.esOberta = esOberta;
+    }
+
+    public void setCodiCita(int codiCíta) {
+        this.codiCita = codiCíta;
     }
 
     
 
-    public int getCodiCíta() {
-        return codiCíta;
+    public int getCodiCita() {
+        return codiCita;
     }
 
-    public Date getDataCita() {
+    public Timestamp getDataCita() {
         return dataCita;
     }
 
@@ -93,7 +98,7 @@ public class Cita implements Serializable {
     
     
 
-    public void setDataCita(Date dataCita) {
+    public void setDataCita(Timestamp dataCita) {
         this.dataCita = dataCita;
     }
 
@@ -112,7 +117,7 @@ public class Cita implements Serializable {
         return persona;
     }
 
-    public Metge getMetge() {
+    public Persona getMetge() {
         return metge;
     }
 
@@ -121,16 +126,16 @@ public class Cita implements Serializable {
         if (persona == null) {
             throw new CitaException("En una cita, la persona es obligatoria");
         }
-        persona.addCitaPersona(this);
+ //       persona.addCitaPersona(this);
         this.persona = persona;
     }
 
-    public void setMetge(Metge metge) {
+    public void setMetge(Persona metge) {
         System.out.println("Entro setMetge");
         if (metge == null) {
             throw new CitaException("En una cita, el Metge és obligatòri");
         }
-        metge.addCitaMetge(this);
+        //metge.addCitaMetge(this);
         this.metge = metge;
     }
     
@@ -138,7 +143,7 @@ public class Cita implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.codiCíta;
+        hash = 97 * hash + this.codiCita;
         hash = 97 * hash + Objects.hashCode(this.dataCita);
         return hash;
     }
@@ -155,7 +160,7 @@ public class Cita implements Serializable {
             return false;
         }
         final Cita other = (Cita) obj;
-        if (this.codiCíta != other.codiCíta) {
+        if (this.codiCita != other.codiCita) {
             return false;
         }
         return Objects.equals(this.dataCita, other.dataCita);
@@ -163,7 +168,7 @@ public class Cita implements Serializable {
 
     @Override
     public String toString() {
-        return "Cita{" + "codiC\u00edta=" + codiCíta + ", dataCita=" + dataCita + ", infrome=" + infrome + '}';
+        return "Cita{" + "codiC\u00edta=" + codiCita + ", dataCita=" + dataCita + ", infrome=" + infrome + '}';
     }
     
     

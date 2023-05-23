@@ -16,10 +16,7 @@ import javax.persistence.Table;
  *
  * @author misra
  */
-@Entity
-@Table(name = "especialidades")
 public class Especialitats implements Serializable{
-    @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codi;
     
@@ -38,6 +35,10 @@ public class Especialitats implements Serializable{
         this.nomEspecialitat = nomEspecialitat;
     }
 
+    public void setCodi(int codi) {
+        this.codi = codi;
+    }
+    
     public int getCodi() {
         return codi;
     }

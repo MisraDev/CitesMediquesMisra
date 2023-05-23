@@ -4,27 +4,23 @@
  */
 package misra.citesmediques;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 /**
  *
  * @author misra
  */
-public class Metge extends Persona {
-    //id clau primaria
-    private int codiMetge;
+public class Metge extends Persona implements Serializable{
     
     private int codiEmpleat;
-    //OneToMany
-    private List<Cita>obteCites = new ArrayList();
     //ManytoMany
-    private List<Especialitats> especialitatsMetge = new ArrayList();;
-    //OneToMany am_me_codi
-    private List<EntradaHorari> agenda = new ArrayList();;
+    private List<Especialitats> especialitatsMetge = new ArrayList();
+                                
+    
     
     protected Metge(){}
     
@@ -32,12 +28,11 @@ public class Metge extends Persona {
         this.codiEmpleat = codiEmpleat;
     }
 
-    public int getCodiMetge() {
-        return codiMetge;
+    public void setCodiEmpleat(int codiEmpleat) {
+        this.codiEmpleat = codiEmpleat;
     }
     
     
-
     public long getCodiEmpleat() {
         return codiEmpleat;
     }
@@ -56,6 +51,7 @@ public class Metge extends Persona {
             especialitatsMetge.add(e);
             return true;
         }
+        
     }
 
     public boolean removeEspecialitat(Especialitats e) {
@@ -64,7 +60,7 @@ public class Metge extends Persona {
         }
         return especialitatsMetge.remove(e);
     }
-    
+    /*
     public Iterator<EntradaHorari> iteAgenda() {
         return Collections.unmodifiableCollection(agenda).iterator();
     }
@@ -87,12 +83,12 @@ public class Metge extends Persona {
         }
         return agenda.remove(e);
     }
+*/
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + this.codiMetge;
-        hash = 59 * hash + this.codiEmpleat;
+        int hash = 7;
+        hash = 43 * hash + this.codiEmpleat;
         return hash;
     }
 
@@ -108,11 +104,10 @@ public class Metge extends Persona {
             return false;
         }
         final Metge other = (Metge) obj;
-        if (this.codiMetge != other.codiMetge) {
-            return false;
-        }
         return this.codiEmpleat == other.codiEmpleat;
     }
+
+    
 
     
     
@@ -121,7 +116,7 @@ public class Metge extends Persona {
     public String toString() {
         return "Metge{" + "codiEmpleat=" + codiEmpleat + ", especialitatMetge=" + especialitatsMetge + '}';
     }
-    
+    /*
     public Iterator<Cita> iteCitesMetge() {
         return Collections.unmodifiableCollection(obteCites).iterator();
     }
@@ -145,7 +140,7 @@ public class Metge extends Persona {
         return obteCites.remove(e);
     }
     
-    
+    */
     
     
     
