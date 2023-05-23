@@ -145,3 +145,8 @@ C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVi
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\obj\x86\Debug\resources.en-us.resfiles.intermediate
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\obj\x86\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_636340429040000000.json
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\obj\x86\Debug\.winmd_cache\$Robmikh.CompositionSurfaceFactory.winmd_636421368520000000.json
+C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\HistorialPacient.xbf
+C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\obj\x86\Debug\HistorialPacient.g.i.cs
+C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\obj\x86\Debug\HistorialPacient.g.cs
+C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\obj\x86\Debug\HistorialPacient.xaml
+C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\obj\x86\Debug\HistorialPacient.xbf

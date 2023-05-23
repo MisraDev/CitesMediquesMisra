@@ -280,6 +280,21 @@ namespace AppEsciptoriAgendaVisitesMediques
 
         private void Historial_Click(object sender, RoutedEventArgs e)
         {
+            String nif = "";
+            PersonaDB persona = PersonaDB.getPersonasDB(mCodiPacient);
+            if (persona != null)
+            {
+                Frame rootFrame = Window.Current.Content as Frame;
+                rootFrame.Navigate(typeof(HistorialPacient), persona.Nif);
+
+            }
+            else
+            {
+                //var dialog = new MessageDialog("No has seleccionado una cita que contenga persona con nif.");
+                Debug.WriteLine("No ha seleccionado una cita con persona");
+
+            }
+             
             
 
         }
