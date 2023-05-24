@@ -80,11 +80,25 @@
                 <TextBlock x:ConnectionId='4' x:Name="EdatText" FontSize="24" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,-1,0" />
                 <TextBlock Text="Informe:" FontSize="24" Margin="0,0,9,0" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="2" />
                 <TextBox x:ConnectionId='5' x:Name="InformeText"                                       TextWrapping="Wrap" AcceptsReturn="True" FontSize="18" Height="400" Margin="0,20,-1,0" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <Button x:ConnectionId='6' x:Name="DesarBtn"                     Content="Desar" FontSize="18" Margin="83,20,0,0" Grid.Row="6" IsEnabled="False" Grid.Column="1" VerticalAlignment="Top"/>
+                <Button x:ConnectionId='6' x:Name="DesarBtn"                     Background="Navy" Content="Desar" FontSize="18" Margin="83,20,0,0" Grid.Row="6" IsEnabled="False" Grid.Column="1" VerticalAlignment="Top">
+                    <Button.Foreground>
+                        <SolidColorBrush Color="White"/>
+                    </Button.Foreground>
+                    <Button.CornerRadius>
+                        <CornerRadius>5</CornerRadius>
+                    </Button.CornerRadius>
+                </Button>
                 <TextBlock x:ConnectionId='7' x:Name="DesatText" FontSize="18" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Margin="10,10,10,10" />
                 <TextBlock x:ConnectionId='8' x:Name="CodiPacientText" FontSize="18" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" Margin="10,10,10,10" />
 
-                <Button x:ConnectionId='9' x:Name="HistorialBtn"                         Content="Generar Historial" FontSize="18" Margin="83,20,0,0" Grid.Row="8" IsEnabled="False" Grid.Column="1" VerticalAlignment="Top"/>
+                <Button x:ConnectionId='9' x:Name="HistorialBtn" Background="Navy"                         Content="Generar Historial" FontSize="18" Margin="83,20,0,0" Grid.Row="8" IsEnabled="False" Grid.Column="1" VerticalAlignment="Top">
+                    <Button.Foreground>
+                        <SolidColorBrush Color="White"/>
+                    </Button.Foreground>
+                    <Button.CornerRadius>
+                        <CornerRadius>5</CornerRadius>
+                    </Button.CornerRadius>
+                </Button>
 
             </Grid>
         </StackPanel>

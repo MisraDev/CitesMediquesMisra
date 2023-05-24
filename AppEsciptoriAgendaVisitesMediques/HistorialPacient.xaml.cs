@@ -23,6 +23,9 @@ namespace AppEsciptoriAgendaVisitesMediques
     public sealed partial class HistorialPacient : Page
     {
         String nifPacient;
+        private static String nomUsuari = "dam2_mdelaro4";
+        private static String contraseya = "6673C";
+        private static String path = "Fdam2_mdelaro4/FReports/FHistorialPacients";
         public HistorialPacient()
         {
             this.InitializeComponent();
@@ -37,8 +40,16 @@ namespace AppEsciptoriAgendaVisitesMediques
                 nifPacient = (string)e.Parameter;
 
             }
-            nifText.Text = nifPacient;
-            webViewJaper.Navigate(new Uri("https://www.google.com"));
+            //nifText.Text = nifPacient;
+            webViewJaper.Navigate(new Uri("http://51.68.224.27:8080/jasperserver/flow.html?" +
+    "_flowId=viewReportFlow&standAlone=true&" +
+    "ParentFolderUri=%2Fdam2_mdelaro4%2FReports&" +
+    "reportUnit=%2Fdam2_mdelaro4%2FReports%2FHistorialPacients&" +
+    "j_username=" + nomUsuari + "&j_password=" + contraseya + "&NIF=" + nifPacient));
+
+           
+
+            
         }
     }
 }

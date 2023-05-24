@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="SkyBlue">
-        <TextBlock x:Name="nifText" Text="Holaaaa"  FontSize="20"/>
+        <TextBlock x:Name="nifText" Text="Visualizador de informes"  FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Margin="20,16,20,20"/>
         <WebView x:Name="webViewJaper" Margin="100, 100, 100, 100" />
     </Grid>
 </Page>
