@@ -42,6 +42,7 @@ public class ViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<Especialitats>> mEspecialitats = new MutableLiveData<>();
     public MutableLiveData<List<Persona>> mMetges = new MutableLiveData<>();
+    public MutableLiveData<List<String>> mDiesSemanaDisponibles = new MutableLiveData<>();
     public MutableLiveData<Especialitats> mEspecialitat = new MutableLiveData<>();
     public MutableLiveData<List<Time>> mHoresDisponibles = new MutableLiveData<>();
     public MutableLiveData<Integer> mCodiPersona = new MutableLiveData<>();
@@ -185,6 +186,64 @@ public class ViewModel extends AndroidViewModel {
                     Toast.makeText(mView.getContext(), "No hi han hores disponibles", Toast.LENGTH_SHORT).show();
                 } else {
                     mHoresDisponibles.setValue(result);
+
+                }
+                System.out.println("El resultado es: " + result);
+            }
+        }.execute(json);
+    }
+
+    public void diesSemanaDisponibles(Persona metgeSeleccionado, Especialitats especialitatSeleccionada, View view) {
+        String json = JsonUtils.generarJSON("Dies disponibles",
+                metgeSeleccionado.getCodi(),
+                especialitatSeleccionada.getCodi());
+
+        new AsyncTask<String, Void, List<String>>() {
+            @Override
+            protected List<String> doInBackground(String... params) {
+                List<String> result = null;
+                try {
+                    Socket socket = new Socket(host, port);
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                    writer.write(params[0]);
+                    writer.newLine();
+                    writer.flush();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    String jsonResponse = reader.readLine();
+
+                    // Convertir la cadena JSON en un JSONArray
+                    if(jsonResponse!=null){
+                        JSONArray jsonArray = new JSONArray(jsonResponse);
+
+                        // Convertir el JSONArray en una lista de objetos CitaFormat
+                        result = new ArrayList<>();
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject perObject = jsonArray.getJSONObject(i);
+                            String dia = perObject.getString("dia");
+                            result.add(dia);
+                        }
+                    } else{
+                        result = null;
+                    }
+
+                    socket.close();
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return result;
+            }
+
+            @Override
+            protected void onPostExecute(List<String> result) {
+                if (result == null || result.isEmpty()) {
+                    // Manejar el error de inicio de sesión aquí
+                    Toast.makeText(view.getContext(), "No hi han dies disponibles", Toast.LENGTH_SHORT).show();
+                } else {
+                    mDiesSemanaDisponibles.setValue(result);
 
                 }
                 System.out.println("El resultado es: " + result);

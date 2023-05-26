@@ -1,10 +1,5 @@
 
-drop table metge_especialitat;
-drop table agenda_metges; 
-drop table cita;
-drop table especialitat;
-drop table metge;
-drop table persona;
+
 
 CREATE TABLE persona (
   per_codi INT(3) AUTO_INCREMENT,

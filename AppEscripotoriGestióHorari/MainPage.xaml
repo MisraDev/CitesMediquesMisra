@@ -93,7 +93,7 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
             <TextBlock x:Name="DesatText" FontSize="24"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
-            <Button Content="DESAR" Background="Navy" x:Name="btnClick" Click="Desar_Click" Margin="0, 0, 50, 0" HorizontalAlignment="Center" Grid.Row="2">
+            <Button Content="DESAR CANVIS" Background="Navy" x:Name="btnClick" Click="Desar_Click" Margin="0, 0, 50, 0" HorizontalAlignment="Center" Grid.Row="2">
                 <Button.Foreground>
                     <SolidColorBrush Color="White"/>
                 </Button.Foreground>
@@ -101,6 +101,7 @@
                     <CornerRadius>5</CornerRadius>
                 </Button.CornerRadius>
             </Button>
+            <TextBlock x:Name="infotText" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="10,10,10,10" Grid.Row="2"/>
         </Grid>
         
     </Grid>

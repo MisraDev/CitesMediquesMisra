@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppEscripotoriGestióHorari.model
 {
-    class Hora
+    public class Hora
     {
         public enum Dies { Dilluns, Dimarts, Dimecres, Dijous, Divendres, Dissabte, Diumenge }
         public enum Hores

@@ -517,13 +517,19 @@ public class FrameAppEscriptori extends javax.swing.JFrame {
                     txtCogn2.setText(""+selectedMetge.getCognom2());
                     txtadreca.setText(""+selectedMetge.getAdreca());
                     txtPoblacio.setText(""+selectedMetge.getPoblacio());
-                    txtSexe.setText(""+selectedMetge.getSexe());
+                    if(selectedMetge.getSexe()==0){
+                        txtSexe.setText("Dona");
+                    }else{
+                        txtSexe.setText("Home");
+                    }
+                    //txtSexe.setText(""+selectedMetge.getSexe());
                     //Llenamos lista de especialidades del metge
                     List<Especialitats> espMetge = cp.getEspecialitatsMetge(selectedMetge.getCodi());
                     listEspecialitats.setModel(emptyModel);
                     for (Especialitats esp : espMetge) {
                         modelEsp.addElement(esp.getNomEspecialitat());
                     }
+                    bloquearEdicionJTextField(jPanel1);
                     listEspecialitats.setModel(modelEsp);
                     espMetge.clear();
                 }
@@ -551,6 +557,16 @@ public class FrameAppEscriptori extends javax.swing.JFrame {
             if (component instanceof JTextField) {
                 ((JTextField) component).setText("");
             }
+        }
+    }
+    
+    private void bloquearEdicionJTextField(JPanel panel) {
+        Component[] components = panel.getComponents();
+        for (Component component : components) {
+            if (component instanceof JTextField) {
+                ((JTextField) component).setEnabled(false);
+                
+            } 
         }
     }
 

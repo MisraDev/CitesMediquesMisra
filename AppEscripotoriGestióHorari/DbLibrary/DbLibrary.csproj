@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DBUtils.cs" />
+    <Compile Include="modelo\AgendaMetgeDB.cs" />
     <Compile Include="modelo\CitaDB.cs" />
     <Compile Include="modelo\EspecialitatDB.cs" />
     <Compile Include="modelo\PersonaDB.cs" />

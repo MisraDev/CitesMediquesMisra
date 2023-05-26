@@ -1,6 +1,7 @@
 package misra.citesmediques.fragments;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -39,7 +40,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import misra.citesmediques.R;
 import misra.citesmediques.ViewModel;
@@ -60,6 +63,7 @@ public class CrearCitaFragment extends Fragment implements HoresAdapter.HoraSele
     ArrayAdapter<Especialitats> adapterEsp;
     ArrayAdapter<Persona> adapterMet;
     boolean isFirstSelection = true;
+    boolean isFirstSelectionMetge = true;
     View mView;
     Especialitats especialitatSeleccionada;
     Persona metgeSeleccionado;
@@ -104,6 +108,7 @@ public class CrearCitaFragment extends Fragment implements HoresAdapter.HoraSele
         // Obtén la referencia al Spinner en tu código
         Spinner spinnerEsp = binding.especialitatSpinner;
         Spinner spinnerMetg = binding.metgesSpinner;
+        binding.datePickerActions.setEnabled(false);
         // Crea el adaptador para el Spinner
 
 
@@ -153,6 +158,40 @@ public class CrearCitaFragment extends Fragment implements HoresAdapter.HoraSele
                 adapterMet.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerMetg.setAdapter(adapterMet);
 
+
+            }
+        });
+        //Primer mirem que metge ha sigut seleccionat y despres:
+        //Farem la consulta a la BD per saber quins dies de la semana esta disponible
+        spinnerMetg.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (isFirstSelectionMetge) {
+                    isFirstSelectionMetge = false;
+                    return;
+                }
+                metgeSeleccionado = (Persona) parent.getItemAtPosition(position);
+                viewModel.diesSemanaDisponibles(metgeSeleccionado, especialitatSeleccionada, mView);
+                binding.datePickerActions.setEnabled(true);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //Ara observem la llista de dies disponibles si ha cambiat
+        //Despreés actualitzarem el datePicker marcant els dies disponibles
+        DatePicker datePicker = binding.datePickerActions;
+        viewModel.mDiesSemanaDisponibles.observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> diesDisponibles) {
+                binding.txtdiasSemana.setText("");
+                StringBuilder fraseSetmana = new StringBuilder();
+                for (String diaSetmana : diesDisponibles) {
+                    fraseSetmana.append(diaSetmana).append(", ");
+                }
+                binding.txtdiasSemana.setText(fraseSetmana.toString());
             }
         });
 
@@ -301,6 +340,8 @@ public class CrearCitaFragment extends Fragment implements HoresAdapter.HoraSele
                             CitaFormat cita = new CitaFormat(codi, data, hora, especialitat, metge);
                             result.add(cita);
                         }
+                    } else if(jsonResponse!= null && jsonResponse.equals("")){
+                        result = null;
                     }
 
 
@@ -324,6 +365,10 @@ public class CrearCitaFragment extends Fragment implements HoresAdapter.HoraSele
                     // Manejar el error de inicio de sesión aquí
                     Toast.makeText(mView.getContext(), "No se ha podido concertar la cita",
                             Toast.LENGTH_SHORT).show();
+                }else if(result.isEmpty()){
+                    Toast.makeText(mView.getContext(), "Esta cita ya existe",
+                            Toast.LENGTH_SHORT).show();
+
                 } else {
 
                     Toast.makeText(mView.getContext(), "cita Concertada",
@@ -331,6 +376,7 @@ public class CrearCitaFragment extends Fragment implements HoresAdapter.HoraSele
                     NavController navController = NavHostFragment.findNavController(requireParentFragment());
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("citas", new ArrayList<>(result));
+                    bundle.putInt("codiPersona", codiPersona);
                     navController.navigate(R.id.action_crearCitaFragment_to_listaCitesFragment2, bundle);
                 }
                 System.out.println("El resultado es: " + result);

@@ -122,8 +122,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\FilaDataGrid.cs" />
     <Compile Include="model\Hora.cs" />
-    <Compile Include="model\HorariMetge.cs" />
+    <Compile Include="model\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -30,7 +30,8 @@ namespace AppEsciptoriAgendaVisitesMediques
         {
             this.InitializeComponent();
             
-            
+
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -50,6 +51,12 @@ namespace AppEsciptoriAgendaVisitesMediques
            
 
             
+        }
+
+        private void torna_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+
         }
     }
 }

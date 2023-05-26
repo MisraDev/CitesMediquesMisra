@@ -1,6 +1,7 @@
 ﻿using DbLibrary.modelo;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace AppEscripotoriGestióHorari.model
     public class FilaDataGrid
     {
 
-        public FilaDataGrid(string hora, List<EspecialitatDB> especialitats, EspecialitatDB dilluns, EspecialitatDB dimarts, EspecialitatDB dimecres, EspecialitatDB dijous, EspecialitatDB divendres, EspecialitatDB dissabte, EspecialitatDB diumenge)
+        public FilaDataGrid(string hora, ObservableCollection<EspecialitatDB> especialitats, EspecialitatDB dilluns, EspecialitatDB dimarts, EspecialitatDB dimecres, EspecialitatDB dijous, EspecialitatDB divendres, EspecialitatDB dissabte, EspecialitatDB diumenge)
         {
             Hora = hora;
             Especialitats = especialitats;
@@ -24,7 +25,7 @@ namespace AppEscripotoriGestióHorari.model
         }
 
         public String Hora { get; set; }
-        public List<EspecialitatDB> Especialitats { get; set; }
+        public ObservableCollection<EspecialitatDB> Especialitats { get; set; }
         public EspecialitatDB Dilluns { get; set; }
         public EspecialitatDB Dimarts { get; set; }
         public EspecialitatDB Dimecres { get; set; }

@@ -110,22 +110,6 @@ public class Servidor_CM_JDBC_Android implements Runnable {
             return;
         }
         
-        Persona p = cp.getPersona(4);
-        List<Persona> lP = cp.getMetgesPerEspecialitatJDBC(3);
-        for(Persona per: lP){
-            System.out.println(""+per.getNom());
-        }
-        List<Time> hores = cp.getForatsDisponibles(1, 4, "2023-05-12");
-        //System.out.println(""+p.getNom());
-        for(Time time: hores){
-            System.out.println(""+time);
-        }
-        List<Especialitats> esp = cp.getEspecialitats();
-        for(Especialitats espe: esp){
-            System.out.println(""+espe.getNomEspecialitat());
-        }
-        Date fecha = new Date(System.currentTimeMillis());
-        System.out.println(fecha.toString());
         
         
         while (running) {
@@ -161,6 +145,9 @@ public class Servidor_CM_JDBC_Android implements Runnable {
                         break;
                     case "Concertar cita":
                         escritor.write(ConcertarCita(parametrosJson));
+                        break;
+                    case "Dies disponibles":
+                        escritor.write(diesDisponibles(parametrosJson));
                         break;
                 }
 
@@ -339,7 +326,36 @@ public class Servidor_CM_JDBC_Android implements Runnable {
             // Construir el JSON array
             json = citasArray.toString();
             System.out.println(json);
+        } else {
+            json = "";
         }
+        return json;
+    }
+
+    private String diesDisponibles(JsonObject parametrosJson) {
+        int codimet = parametrosJson.get("param0").getAsInt();
+        int codiEsp = parametrosJson.get("param1").getAsInt();
+        
+        List<String> llistaDiesDis;
+        llistaDiesDis = cp.diasSemanaDisponibles(codimet, codiEsp);
+        
+        String json = "";
+        if (llistaDiesDis!=null&&!llistaDiesDis.isEmpty()) {
+            JsonArray diessArray = new JsonArray();
+
+            // Agregar cada hora al JSON array
+            for (String dia : llistaDiesDis) {
+                JsonObject diaObject = new JsonObject();
+                diaObject.addProperty("dia", dia);
+                diessArray.add(diaObject);
+            }
+
+            // Construir el JSON array
+            json = diessArray.toString();
+        } else {
+            return json;
+        }
+            
         return json;
     }
 }

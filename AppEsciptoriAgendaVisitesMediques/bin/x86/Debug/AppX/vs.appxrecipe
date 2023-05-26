@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-05-24T13:46:23.789</Modified>
+      <Modified>2023-05-24T21:47:47.578</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\AppEsciptoriAgendaVisitesMediques.exe">
       <PackagePath>entrypoint\AppEsciptoriAgendaVisitesMediques.exe</PackagePath>
-      <Modified>2023-05-24T13:46:23.180</Modified>
+      <Modified>2023-05-24T21:47:46.741</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\.nuget\packages\bouncycastle.netcore\1.8.3\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -298,19 +298,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\AppEsciptoriAgendaVisitesMediques.xr.xml">
       <PackagePath>AppEsciptoriAgendaVisitesMediques.xr.xml</PackagePath>
-      <Modified>2023-05-24T13:45:17.288</Modified>
+      <Modified>2023-05-24T21:35:34.785</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2023-05-24T13:45:17.294</Modified>
+      <Modified>2023-05-24T21:47:46.650</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\HistorialPacient.xbf">
       <PackagePath>HistorialPacient.xbf</PackagePath>
-      <Modified>2023-05-24T13:45:17.294</Modified>
+      <Modified>2023-05-24T21:47:46.651</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2023-05-24T13:46:23.107</Modified>
+      <Modified>2023-05-24T21:47:46.650</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -322,7 +322,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\Core\AppEsciptoriAgendaVisitesMediques.exe">
       <PackagePath>AppEsciptoriAgendaVisitesMediques.exe</PackagePath>
-      <Modified>2023-05-24T13:46:23.786</Modified>
+      <Modified>2023-05-24T21:47:47.574</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,12 @@ package misra.citesmediques;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.compose.ui.text.intl.Locale;
 
+
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbarr);
         setSupportActionBar(toolbar);
     }
+
+
     /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

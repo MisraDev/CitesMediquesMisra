@@ -18,10 +18,9 @@ namespace DbLibrary.modelo
 
         private String nomEspecialitat;
 
-        public int Codi { get => codi; set => codi = value; }
-        public string NomEspecialitat { get => nomEspecialitat; set => nomEspecialitat = value; }
+        
 
-        protected EspecialitatDB()
+        public EspecialitatDB()
         {
 
         }
@@ -32,6 +31,9 @@ namespace DbLibrary.modelo
             this.nomEspecialitat = nomEspecialitat;
 
         }
+
+        public int Codi { get => codi; set => codi = value; }
+        public string NomEspecialitat { get => nomEspecialitat; set => nomEspecialitat = value; }
 
         public override string ToString()
         {
@@ -67,7 +69,7 @@ namespace DbLibrary.modelo
                             comanda.CommandText = $@"select e.esp_codi as esp_codi  , e.esp_nom as esp_nom  from metge_especialitat me join especialitat e on e.esp_codi = me.me_esp_codi where me.me_met_codi = @c_metge ";
 
                             DBUtils.afegirParametre(comanda, "c_metge", codiMetge, DbType.Int32);
-
+                            especialitatsMetge.Add(new EspecialitatDB(0, "N/D"));
                             DbDataReader reader = comanda.ExecuteReader();
                             while (reader.Read())
                             {

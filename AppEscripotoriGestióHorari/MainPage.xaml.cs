@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,6 +29,17 @@ namespace AppEscripotoriGestióHorari
     {
         private int mCodiMetge = 0;
         private List<Hora> horari;
+        List<FilaDataGrid> oldDades;
+        List<FilaDataGrid> dades;
+        ObservableCollection<AgendaMetgeDB> agendaMetge;
+        public ObservableCollection<EspecialitatDB> Especialitats
+        {
+            get { return (ObservableCollection<EspecialitatDB>)GetValue(EspecialitatsProperty); }
+            set { SetValue(EspecialitatsProperty, value); }
+        }
+
+        public static readonly DependencyProperty EspecialitatsProperty =
+            DependencyProperty.Register("Especialitats", typeof(ObservableCollection<EspecialitatDB>), typeof(MainPage), new PropertyMetadata(new List<EspecialitatDB>()));
         public MainPage()
         {
             this.InitializeComponent();
@@ -41,6 +53,12 @@ namespace AppEscripotoriGestióHorari
             {
                 Debug.WriteLine("Esp: " + cita.Codi + " - " + cita.NomEspecialitat);
             }
+            codiMetge.TextChanged += codiMetge_TextChanged;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private async void codiMetge_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,14 +68,14 @@ namespace AppEscripotoriGestióHorari
                 // El texto ingresado es un número válido
                 mCodiMetge = codigoMetge;
                 horari = Hora.GenerarHorari();
-                ObservableCollection<EspecialitatDB> cites = new ObservableCollection<EspecialitatDB>();
-                cites = CitaDB.getCitasDBSemanaActual(codigoMetge);
+                agendaMetge = AgendaMetgeDB.GetHorari(mCodiMetge);
+                Especialitats = EspecialitatDB.getEspecialitatsDBPerMetge(mCodiMetge);
+                dades = new List<FilaDataGrid>();
+                dades = Utils.GenerarLlistaEspecialitats(horari, dades, Especialitats, agendaMetge);
+                HorariDataGrid.ItemsSource = dades;
+                oldDades = Utils.OmplirLLista(dades);
 
-                String setmana = "actual";
-                Utils.GenerarDataGrid(dtgAgenda, cites, horari, setmana);
-                PrevBtn.IsEnabled = true;
-                ActualBtn.IsEnabled = false;
-                NextBtn.IsEnabled = true;
+                btnClick.IsEnabled = false;
             }
             else
             {
@@ -70,11 +88,15 @@ namespace AppEscripotoriGestióHorari
         }
         private void HorariDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            btnClick.IsEnabled = true;
 
         }
 
         private void Desar_Click(object sender, RoutedEventArgs e)
         {
+            List<FilaDataGrid> newDades = (List<FilaDataGrid>)HorariDataGrid.ItemsSource;
+            Utils.DesarHorariMetge( oldDades, newDades, mCodiMetge);
+            infotText.Text = "Dades desades!";
 
         }
     }

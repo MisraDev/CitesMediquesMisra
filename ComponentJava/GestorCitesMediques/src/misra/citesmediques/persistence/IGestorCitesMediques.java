@@ -217,11 +217,17 @@ public interface IGestorCitesMediques {
     int loginPersona(String loginPersona, String passwPersona);
     
     /**
-     * devuelce todas las citas de un metge en concret
+     * devuelce todas los dias de la semana disponibles por metge y especialitat
      * 
-     * @return llista cites
+     * @return llista dies
      * 
      */
+    
+    List<String> diasSemanaDisponibles(int codiMetge, int codiEspecialitat);
+    
+    Cita getCitaAndroid(int codiMetge, int codiEsp, Timestamp diaHora);
+    
+    
     void rollback();
     
 }

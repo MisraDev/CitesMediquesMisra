@@ -383,6 +383,16 @@ public class EPCM_JPA implements IGestorCitesMediques{
     public boolean concertarCita(int codiPersona, int codiMetge, int codiEspecialitat, Timestamp data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List<String> diasSemanaDisponibles(int codiMetge, int codiEspecialitat) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Cita getCitaAndroid(int codiMetge, int codiEsp, Timestamp diaHora) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }

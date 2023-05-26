@@ -52,6 +52,8 @@ public class EPCM_JDBC implements IGestorCitesMediques {
     PreparedStatement psMetgeXEsp = null;  // Comprovar si 
     PreparedStatement psForats = null;  // Comprovar si 
     PreparedStatement psAgenda = null;  // Comprovar si 
+    PreparedStatement psDiesSemana = null;  // Comprovar si
+    PreparedStatement psCitaMetgeEspDia = null;
     
     /**
      * Constructor que estableix connexió amb el servidor a partir de les dades
@@ -124,7 +126,7 @@ public class EPCM_JDBC implements IGestorCitesMediques {
                     "join especialitat e on e.esp_codi = c.cit_codi_esp \n" +
                     "join persona p on p.per_codi  = c.cit_codi_empleat \n" +
                     "where c.cit_codi_persona = ?\n" +
-                    "order by 1 asc";
+                    "order by 2,3 asc";
                 psCitesF = con.prepareStatement(cadena);
             } catch (SQLException ex) {
                 throw new GestorCitesMediquesException("Error en preparar sentència psCites", ex);
@@ -185,6 +187,18 @@ public class EPCM_JDBC implements IGestorCitesMediques {
                 String cadena = "select m.am_hora as agenda from agenda_metges m \n" +
                                 "where m.am_dia_setmana = ? and m.am_esp_codi = ? and m.am_me_codi = ?";
                 psAgenda = con.prepareStatement(cadena);
+            } catch (SQLException ex) {
+                throw new GestorCitesMediquesException("Error en preparar sentència psDelCita", ex);
+            }
+            try {
+                String cadena = "select DISTINCT am.am_dia_setmana from agenda_metges am where am.am_me_codi = ? and am.am_esp_codi = ?";
+                psDiesSemana = con.prepareStatement(cadena);
+            } catch (SQLException ex) {
+                throw new GestorCitesMediquesException("Error en preparar sentència psDelCita", ex);
+            }
+            try {
+                String cadena = "select * from cita c where c.cit_codi_empleat = ? and c.cit_codi_esp = ? and c.cit_data_hora = ?";
+                psCitaMetgeEspDia = con.prepareStatement(cadena);
             } catch (SQLException ex) {
                 throw new GestorCitesMediquesException("Error en preparar sentència psDelCita", ex);
             }
@@ -547,9 +561,25 @@ public class EPCM_JDBC implements IGestorCitesMediques {
 
     @Override
     public boolean concertarCita(int codiPersona, int codiMetge, int codiEspecialitat, Timestamp data) {
+        boolean trobada = false;
+        //primero buscamos una cita con la misma persona, metge y data
+        try{
+            psCitaMetgeEspDia.setInt(1, codiMetge);
+            psCitaMetgeEspDia.setInt(2, codiEspecialitat);
+            psCitaMetgeEspDia.setTimestamp(3, data);
+            ResultSet rs = psCitaMetgeEspDia.executeQuery();
+            if(!rs.next()){
+                trobada = false;
+            } else{
+                trobada = true;
+            }
+        }catch(SQLException e){
+        
+        }
+        
         //Aqui hay que restringir que un medico pueda pedir cita a el mismo
         boolean ok = false;
-        if(codiPersona!=codiMetge){
+        if(codiPersona!=codiMetge && !trobada){
             try {
                 psInsertCita.setTimestamp(1, data);
                 psInsertCita.setInt(2, codiPersona);
@@ -661,6 +691,32 @@ public class EPCM_JDBC implements IGestorCitesMediques {
         } catch (SQLException ex) {
             throw new GestorCitesMediquesException("Error en recuperar metge per especialitat", ex);
         }
+    }
+
+    @Override
+    public List<String> diasSemanaDisponibles(int codiMetge, int codiEspecialitat) {
+        List<String> llistaDiesSemana = new ArrayList();
+        try {
+            psDiesSemana.setInt(1, codiMetge);
+            psDiesSemana.setInt(2, codiEspecialitat);
+            ResultSet rs = psDiesSemana.executeQuery();
+            while (rs.next()) {
+                String diaSemana = rs.getString("am_dia_setmana");
+                llistaDiesSemana.add(diaSemana);
+            }
+            if (llistaDiesSemana.isEmpty()) {
+                return null;
+            }
+            
+        return llistaDiesSemana;
+        } catch (SQLException ex) {
+            throw new GestorCitesMediquesException("Error en recuperar dies de la semana disponibles", ex);
+        }
+    }
+
+    @Override
+    public Cita getCitaAndroid(int codiMetge, int codiEsp, Timestamp diaHora) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     

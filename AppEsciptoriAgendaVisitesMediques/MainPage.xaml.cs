@@ -37,7 +37,7 @@ namespace AppEsciptoriAgendaVisitesMediques
         {
             this.InitializeComponent();
             //DataContext = new MyViewModel();
-
+            InformeText.IsEnabled = false;
 
             ObservableCollection<CitaDB> citass = new ObservableCollection<CitaDB>(CitaDB.getCitasDB(4));
             PersonaDB p = PersonaDB.getPersonasDB(1);
@@ -139,6 +139,7 @@ namespace AppEsciptoriAgendaVisitesMediques
 
                 if (!string.IsNullOrEmpty(valorColumna) && valorColumna[0] == 'C')
                 {
+                    InformeText.IsEnabled = true;
                     HistorialBtn.IsEnabled = true;
                     CitaDB cita = new CitaDB();
 
@@ -269,7 +270,7 @@ namespace AppEsciptoriAgendaVisitesMediques
                     
                     if (!Utils.Ultimes48Horas(cita.DataCita))
                     {
-                        DesatText.Text = "El inoforme no es pot editar";
+                        DesatText.Text = "L'informe no es pot editar, han passat 48 hores";
                     }
 
                 }
