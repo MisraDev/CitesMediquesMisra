@@ -47,16 +47,20 @@ namespace AppEsciptoriAgendaVisitesMediques.model
                 if (hor.Diumenge != null) { row[dies[6]] = hor.Diumenge; }
                 dt.Rows.Add(row);
             }
+            
 
             //Crear les columnes
             for (int i = 0; i < dt.Columns.Count; i++)
             {
-                agendaDataGrid.Columns.Add(new DataGridTextColumn()
+                var column = new DataGridTextColumn()
                 {
                     Header = dt.Columns[i].ColumnName,
                     Binding = new Binding { Path = new PropertyPath("[" + i.ToString() + "]") }
-
-                });
+                };
+                var style2 = new Style(typeof(TextBlock));
+                style2.Setters.Add(new Setter(TextBlock.MarginProperty, new Thickness(8, 0, 8, 0)));
+                column.ElementStyle = style2; 
+                agendaDataGrid.Columns.Add(column);
             }
 
             //Ficar-ho tot al datagrid
@@ -69,7 +73,7 @@ namespace AppEsciptoriAgendaVisitesMediques.model
             agendaDataGrid.ItemsSource = rows;
 
             //Alternar color de les files
-            Brush lightGray = new SolidColorBrush(Colors.LightGray);
+            Brush lightGray = new SolidColorBrush(Colors.LightBlue);
             agendaDataGrid.AlternatingRowBackground = lightGray;
             agendaDataGrid.GridLinesVisibility = DataGridGridLinesVisibility.All;
 
@@ -78,7 +82,9 @@ namespace AppEsciptoriAgendaVisitesMediques.model
                 // Centrar text columnes
                 var column = agendaDataGrid.Columns[i] as DataGridTextColumn;
                 var style = new Style(typeof(TextBlock));
+                style.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(8, 0, 8, 0)));
                 style.Setters.Add(new Setter(TextBlock.TextAlignmentProperty, TextAlignment.Center));
+                
                 column.ElementStyle = style;
             }
 

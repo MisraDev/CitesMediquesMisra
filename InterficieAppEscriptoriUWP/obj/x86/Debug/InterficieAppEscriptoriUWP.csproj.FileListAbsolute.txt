@@ -2,7 +2,6 @@ C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscript
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscriptoriUWP\bin\x86\Debug\InterficieAppEscriptoriUWP.pdb
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscriptoriUWP\bin\x86\Debug\InterficieAppEscriptoriUWP.pri
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscriptoriUWP\bin\x86\Debug\Microsoft.UI.Xaml.Markup.winmd
-C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscriptoriUWP\obj\x86\Debug\InterficieAppEscriptoriUWP.csproj.AssemblyReference.cache
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscriptoriUWP\obj\x86\Debug\InterficieAppEscriptoriUWP.csproj.CoreCompileInputs.cache
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscriptoriUWP\obj\x86\Debug\InterficieAppEscriptoriUWP.csproj.CopyComplete
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\InterficieAppEscriptoriUWP\obj\x86\Debug\InterficieAppEscriptoriUWP.dll

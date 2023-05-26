@@ -36,13 +36,13 @@
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Background" />
       <RootProperty Name="Content" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="CornerRadius" />
-      <RootProperty Name="Background" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="IsEnabled" />
       <RootEvent Name="Click" />

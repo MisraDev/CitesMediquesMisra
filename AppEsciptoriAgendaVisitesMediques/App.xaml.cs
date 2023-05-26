@@ -61,6 +61,7 @@ namespace AppEsciptoriAgendaVisitesMediques
 
             if (e.PrelaunchActivated == false)
             {
+                
                 if (rootFrame.Content == null)
                 {
                     // Cuando no se restaura la pila de navegación, navegar a la primera página,

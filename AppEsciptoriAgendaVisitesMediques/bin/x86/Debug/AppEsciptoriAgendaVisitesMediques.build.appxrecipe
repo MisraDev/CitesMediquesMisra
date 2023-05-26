@@ -193,15 +193,15 @@
     <AppxPackagedFile Include="C:\Users\misra\.nuget\packages\microsoft.toolkit.uwp.ui.controls.datagrid\5.1.0\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\Assets\logo.png">
+      <PackagePath>Assets\logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
@@ -222,6 +222,9 @@
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\AppEsciptoriAgendaVisitesMediques.xr.xml">
       <PackagePath>AppEsciptoriAgendaVisitesMediques.xr.xml</PackagePath>

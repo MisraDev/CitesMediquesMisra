@@ -9,6 +9,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <local:EspecialidadToColorConverter x:Key="EspecialidadToColorConverter" />
+    </Page.Resources>
+
     <Grid Padding="20,20,20,20">
         <Grid Background="SkyBlue">
             <Grid.RowDefinitions>
@@ -17,22 +21,24 @@
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Gestió Horari " FontSize="24" FontWeight="Bold" TextDecorations="Underline" HorizontalAlignment="Center" Margin="200, 10, 10, 10"/>
+                <TextBlock Text="Gestió Horari " Foreground="Navy" FontSize="24" FontWeight="Bold" TextDecorations="Underline" HorizontalAlignment="Center" Margin="250, 10, 10, 10"/>
                 
             </StackPanel>
             <TextBlock Text="Introdueix el teu codi de metge:"  HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="0, 0, 150, 0"/>
             <TextBox x:Name="codiMetge" PlaceholderText="codi Metge" HorizontalAlignment="Right" Margin="0, 7, 50, 7"/>
             
             <controls:DataGrid x:Name="HorariDataGrid" SelectionChanged="HorariDataGrid_SelectionChanged"
-                                    AutoGenerateColumns="false" VerticalScrollBarVisibility="Visible" Grid.Row="1" Margin="20, 20, 20, 20" >
+                                    AutoGenerateColumns="false" VerticalScrollBarVisibility="Visible" Grid.Row="1" Margin="50" >
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Header="Hora" Binding='{Binding Hora}'/>
-                    <controls:DataGridTemplateColumn Header ="Dilluns">
-                        <controls:DataGridTemplateColumn.CellTemplate>
+                    <controls:DataGridTextColumn Header="Hora" Binding='{Binding Hora}' />
+                    <controls:DataGridTemplateColumn Header ="Dilluns" >
+                        <controls:DataGridTemplateColumn.CellTemplate >
                             <DataTemplate>
                                 <ComboBox x:Name="comboBoxEspecialitats" Width="200" 
                                       ItemsSource='{Binding Especialitats}'
-                                      SelectedItem='{Binding Dilluns, Mode=TwoWay}'/>
+                                      SelectedItem='{Binding Dilluns, Mode=TwoWay}'
+                                          Background="{Binding Dilluns, Converter={StaticResource EspecialidadToColorConverter}}"
+                                          Margin="7"/>
                             </DataTemplate>
                         </controls:DataGridTemplateColumn.CellTemplate>
                     </controls:DataGridTemplateColumn>
@@ -41,7 +47,9 @@
                             <DataTemplate>
                                 <ComboBox x:Name="comboBoxEspecialitats" Width="200" 
                                       ItemsSource='{Binding Especialitats}'
-                                      SelectedItem='{Binding Dimarts, Mode=TwoWay}'/>
+                                      SelectedItem='{Binding Dimarts, Mode=TwoWay}'
+                                          Background="{Binding Dimarts, Converter={StaticResource EspecialidadToColorConverter}}"
+                                          Margin="7"/>
                             </DataTemplate>
                         </controls:DataGridTemplateColumn.CellTemplate>
                     </controls:DataGridTemplateColumn>
@@ -50,7 +58,9 @@
                             <DataTemplate>
                                 <ComboBox x:Name="comboBoxEspecialitats" Width="200" 
                                       ItemsSource='{Binding Especialitats}'
-                                      SelectedItem='{Binding Dimecres, Mode=TwoWay}'/>
+                                      SelectedItem='{Binding Dimecres, Mode=TwoWay}'
+                                          Background="{Binding Dimecres, Converter={StaticResource EspecialidadToColorConverter}}"
+                                          Margin="7"/>
                             </DataTemplate>
                         </controls:DataGridTemplateColumn.CellTemplate>
                     </controls:DataGridTemplateColumn>
@@ -59,7 +69,9 @@
                             <DataTemplate>
                                 <ComboBox x:Name="comboBoxEspecialitats" Width="200" 
                                       ItemsSource='{Binding Especialitats}'
-                                      SelectedItem='{Binding Dijous, Mode=TwoWay}'/>
+                                      SelectedItem='{Binding Dijous, Mode=TwoWay}'
+                                          Background="{Binding Dijous, Converter={StaticResource EspecialidadToColorConverter}}"
+                                          Margin="7"/>
                             </DataTemplate>
                         </controls:DataGridTemplateColumn.CellTemplate>
                     </controls:DataGridTemplateColumn>
@@ -68,7 +80,9 @@
                             <DataTemplate>
                                 <ComboBox x:Name="comboBoxEspecialitats" Width="200" 
                                       ItemsSource='{Binding Especialitats}'
-                                      SelectedItem='{Binding Divendres, Mode=TwoWay}'/>
+                                      SelectedItem='{Binding Divendres, Mode=TwoWay}'
+                                          Background="{Binding Divendres, Converter={StaticResource EspecialidadToColorConverter}}"
+                                          Margin="7"/>
                             </DataTemplate>
                         </controls:DataGridTemplateColumn.CellTemplate>
                     </controls:DataGridTemplateColumn>
@@ -77,7 +91,9 @@
                             <DataTemplate>
                                 <ComboBox x:Name="comboBoxEspecialitats" Width="200" 
                                       ItemsSource='{Binding Especialitats}'
-                                      SelectedItem='{Binding Dissabte, Mode=TwoWay}'/>
+                                      SelectedItem='{Binding Dissabte, Mode=TwoWay}'
+                                          Background="{Binding Dissabte, Converter={StaticResource EspecialidadToColorConverter}}"
+                                          Margin="7"/>
                             </DataTemplate>
                         </controls:DataGridTemplateColumn.CellTemplate>
                     </controls:DataGridTemplateColumn>
@@ -86,7 +102,9 @@
                             <DataTemplate>
                                 <ComboBox x:Name="comboBoxEspecialitats" Width="200" 
                                       ItemsSource='{Binding Especialitats}'
-                                      SelectedItem='{Binding Diumenge, Mode=TwoWay}'/>
+                                      SelectedItem='{Binding Diumenge, Mode=TwoWay}'
+                                          Background="{Binding Diumenge, Converter={StaticResource EspecialidadToColorConverter}}"
+                                          Margin="7"/>
                             </DataTemplate>
                         </controls:DataGridTemplateColumn.CellTemplate>
                     </controls:DataGridTemplateColumn>

@@ -21,4 +21,3 @@ C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\DbLib\obj\x86\Debug\
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\DbLib\obj\x86\Debug\qualifiers.txt
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\DbLib\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\DbLib\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\DbLib\obj\x86\Debug\DbLib.csproj.AssemblyReference.cache

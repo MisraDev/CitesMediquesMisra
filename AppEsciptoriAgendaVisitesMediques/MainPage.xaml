@@ -44,9 +44,9 @@
             <controls:DataGrid x:Name="dtgAgenda" SelectionChanged="dtgAgenda_SelectionChanged"
                                     AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" Grid.Column="0" Grid.Row="0" Margin="20,20,20,20"/>
             <StackPanel  Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="PrevBtn" Click="Previ_Click" Content="&lt;" FontSize="18" Margin="0,0,100,0"/>
+                <Button x:Name="PrevBtn" Click="Previ_Click" Content="Anterior" FontSize="18" Margin="0,0,100,0"/>
                 <Button x:Name="ActualBtn" Click="Actual_Click" Content="Actual" FontSize="18" Margin="0,0,0,0"/>
-                <Button x:Name="NextBtn" Click="Seguent_Click" Content="&gt;" FontSize="18" Margin="100,0,0,0"/>
+                <Button x:Name="NextBtn" Click="Seguent_Click" Content="Posterior" FontSize="18" Margin="100,0,0,0"/>
             </StackPanel>
         </Grid>
         <StackPanel Grid.Column="1" Margin="10,10,10,10" Grid.Row="1">

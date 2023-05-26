@@ -139,6 +139,7 @@ namespace AppEsciptoriAgendaVisitesMediques
 
                 if (!string.IsNullOrEmpty(valorColumna) && valorColumna[0] == 'C')
                 {
+                    
                     InformeText.IsEnabled = true;
                     HistorialBtn.IsEnabled = true;
                     CitaDB cita = new CitaDB();
