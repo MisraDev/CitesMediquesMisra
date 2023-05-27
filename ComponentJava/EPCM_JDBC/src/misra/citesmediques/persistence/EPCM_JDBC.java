@@ -20,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -415,12 +416,18 @@ public class EPCM_JDBC implements IGestorCitesMediques {
             if(!horesOcupades.isEmpty()){
                 while (rs.next()) {
                     Time horaDisponibleAgenda = rs.getTime("agenda");
-                    /*for(Time horaOcup: horesOcupades){
-                        if(!horaOcup.equals(horaDisponibleAgenda)){
-                            horesAgendaDisp.add(horaDisponibleAgenda);
-                        }
-                    } */
+                    
                     horesAgendaDisp.add(horaDisponibleAgenda);
+                }
+                Iterator<Time> iterator = horesAgendaDisp.iterator();
+                while (iterator.hasNext()) {
+                    Time horaDisp = iterator.next();
+                    for (Time horaOcu : horesOcupades) {
+                        if (horaOcu.equals(horaDisp)) {
+                            iterator.remove();
+                            break; // Romper el bucle interno si se encuentra una coincidencia
+                        }
+                    }
                 }
             } else {
                 while (rs.next()) {
