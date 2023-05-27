@@ -83,8 +83,9 @@ namespace AppEsciptoriAgendaVisitesMediques.model
             int horas = int.Parse(hora.Substring(1, hora.Contains("M") ? hora.IndexOf("M") - 1 : 1));
             int minutos = int.Parse(hora.Substring(hora.Contains("M") ? hora.IndexOf("M") + 1 : 3, 2));
 
-            // Combinar les hores i els minuts en una string amb format HH:MM
-            return $"{horas}:{minutos:D2}";
+            string horaFormateada = $"{horas:D2}:{minutos:D2}";
+
+            return horaFormateada;
         }
     }
 

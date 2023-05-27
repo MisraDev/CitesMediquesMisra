@@ -204,16 +204,17 @@ namespace DbLib.Model
                                 }
 
 
-
+                                int persona = reader.GetInt32(reader.GetOrdinal("cit_codi_persona"));
+                                int metge = reader.GetInt32(reader.GetOrdinal("cit_codi_empleat"));
                                 //DateTime? dataHORA = DBUtils.readDB<DateTime>(reader, "cit_data_hora");
                                 //String dataHORA = DBUtils.readDBC<String>(reader, "cit_data_hora");
 
                                 String informe = DBUtils.readDBC<String>(reader, "cit_informe");
-                                int? persona = DBUtils.readDB<Int32>(reader, "cit_codi_persona");
-                                int? metge = DBUtils.readDB<Int32>(reader, "cit_codi_empleat");
+
+                                
 
 
-                                CitaDB cita = new CitaDB(id, dataHora, informe, PersonaDB.getPersonasDB((int)persona), PersonaDB.getPersonasDB(codiMetge));
+                                CitaDB cita = new CitaDB(id, dataHora, informe, PersonaDB.getPersonasDB(persona), PersonaDB.getPersonasDB(codiMetge));
 
 
 

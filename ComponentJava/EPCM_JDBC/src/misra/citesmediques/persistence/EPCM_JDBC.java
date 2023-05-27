@@ -415,11 +415,12 @@ public class EPCM_JDBC implements IGestorCitesMediques {
             if(!horesOcupades.isEmpty()){
                 while (rs.next()) {
                     Time horaDisponibleAgenda = rs.getTime("agenda");
-                    for(Time horaOcup: horesOcupades){
+                    /*for(Time horaOcup: horesOcupades){
                         if(!horaOcup.equals(horaDisponibleAgenda)){
                             horesAgendaDisp.add(horaDisponibleAgenda);
                         }
-                    } 
+                    } */
+                    horesAgendaDisp.add(horaDisponibleAgenda);
                 }
             } else {
                 while (rs.next()) {

@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-05-26T11:45:30.725</Modified>
+      <Modified>2023-05-27T11:46:23.706</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\AppEsciptoriAgendaVisitesMediques.exe">
       <PackagePath>entrypoint\AppEsciptoriAgendaVisitesMediques.exe</PackagePath>
-      <Modified>2023-05-26T11:45:30.080</Modified>
+      <Modified>2023-05-27T11:46:22.837</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\.nuget\packages\bouncycastle.netcore\1.8.3\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -236,7 +236,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\DbLib\bin\x86\Debug\DbLib.dll">
       <PackagePath>DbLib.dll</PackagePath>
-      <Modified>2023-05-26T09:05:36.719</Modified>
+      <Modified>2023-05-27T10:57:22.026</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\.nuget\packages\robmikh.compositionsurfacefactory\0.7.3\lib\uap10.0\Robmikh.CompositionSurfaceFactory.winmd">
       <PackagePath>Robmikh.CompositionSurfaceFactory.winmd</PackagePath>
@@ -326,7 +326,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\misra\Desktop\projecte FINAL\projecteCitesMediques\AppEsciptoriAgendaVisitesMediques\bin\x86\Debug\Core\AppEsciptoriAgendaVisitesMediques.exe">
       <PackagePath>AppEsciptoriAgendaVisitesMediques.exe</PackagePath>
-      <Modified>2023-05-26T11:45:30.723</Modified>
+      <Modified>2023-05-27T11:46:23.702</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
